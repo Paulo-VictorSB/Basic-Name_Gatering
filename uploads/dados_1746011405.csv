@@ -1,0 +1,101 @@
+name,gender,birthdate,email,telefone,interests
+João Silva,m,15-03-1985,joao.silva@gmail.com,987654321,Tecnologia,Esportes,Viagens
+Maria Oliveira,f,22-07-1990,maria.oliveira@hotmail.com,998765432,Música,Cinema,Culinária
+Carlos Souza,m,10-11-1978,carlos.souza@yahoo.com,987651234,Carros,Finanças,Política
+Ana Pereira,f,05-05-1995,ana.pereira@gmail.com,987656789,Moda,Beleza,Fotografia
+Pedro Costa,m,30-09-1982,pedro.costa@outlook.com,998769876,Games,Tecnologia,Programação
+Juliana Santos,f,18-12-1993,juliana.santos@gmail.com,987653456,Livros,Arte,Viagens
+Marcos Rocha,m,25-02-1987,marcos.rocha@hotmail.com,998762345,Esportes,Cerveja,Futebol
+Fernanda Lima,f,12-08-1989,fernanda.lima@yahoo.com,987657890,Yoga,Meditação,Psicologia
+Ricardo Alves,m,03-04-1975,ricardo.alves@gmail.com,998764567,Investimentos,Finanças,Economia
+Patrícia Nunes,f,19-01-1998,patricia.nunes@outlook.com,987659012,Dança,Festas,Música
+Lucas Mendes,m,07-06-1991,lucas.mendes@gmail.com,998765678,Tecnologia,Startups,Inovação
+Amanda Freitas,f,14-10-1984,amanda.freitas@hotmail.com,987652345,Séries,TV,Comédia
+Roberto Dias,m,28-07-1979,roberto.dias@yahoo.com,998767890,Pesca,Natureza,Ar Livre
+Tatiane Gomes,f,09-03-1992,tatiane.gomes@gmail.com,987654567,Moda,Design,Decoração
+Gustavo Henrique,m,21-05-1986,gustavo.henrique@outlook.com,998761234,Carros,Motos,Mecânica
+Vanessa Castro,f,17-09-1994,vanessa.castro@gmail.com,987658901,Leitura,Poesia,Escrita
+Rodrigo Martins,m,04-11-1981,rodrigo.martins@hotmail.com,998763456,Tecnologia,Robótica,IA
+Camila Rios,f,29-06-1996,camila.rios@yahoo.com,987654321,Dança,Teatro,Artes
+Bruno Campos,m,13-02-1988,bruno.campos@gmail.com,998768765,Futebol,Esportes Radicais
+Isabela Moraes,f,26-04-1997,isabela.moraes@outlook.com,987659876,Moda,Maquiagem,Cabelos
+Felipe Cardoso,m,08-08-1983,felipe.cardoso@hotmail.com,998764321,Política,História,Filosofia
+Laura Duarte,f,01-12-1990,laura.duarte@gmail.com,987657654,Animais,Culinária,Jardinagem
+Eduardo Santos,m,16-03-1976,eduardo.santos@yahoo.com,998769543,Finanças,Tecnologia,Liderança
+Daniela Costa,f,23-10-1987,daniela.costa@outlook.com,987652109,Viagens,Cultura,Fotografia
+Rafael Lopes,m,06-07-1993,rafael.lopes@gmail.com,998765432,Programação,Desenvolvimento,Web
+Beatriz Nascimento,f,19-05-1985,beatriz.nascimento@hotmail.com,987653210,Saúde,Bem-estar,Nutrição
+Thiago Oliveira,m,12-01-1999,thiago.oliveira@yahoo.com,998762109,Games,Tecnologia,Animes
+Carolina Souza,f,30-08-1991,carolina.souza@gmail.com,987654098,Música,Instrumentos,Shows
+Diego Pereira,m,14-04-1980,diego.pereira@outlook.com,998763210,Carros,Automobilismo,Esportes
+Larissa Mendes,f,27-11-1994,larissa.mendes@hotmail.com,987651987,Moda,Design,Sustentabilidade
+André Luiz,m,09-02-1989,andre.luiz@yahoo.com,998764098,Cinema,Fotografia,Arte
+Gabriela Rocha,f,03-06-1992,gabriela.rocha@gmail.com,987659876,Literatura,Idiomas,Viagens
+Vinícius Almeida,m,18-09-1984,vinicius.almeida@outlook.com,998761987,Tecnologia,Inovação,Startups
+Mariana Dias,f,22-07-1995,mariana.dias@hotmail.com,987657890,Psicologia,Comportamento,Educação
+Leonardo Costa,m,05-10-1977,leonardo.costa@yahoo.com,998768765,Finanças,Investimentos,Economia
+Raquel Gomes,f,11-03-1988,raquel.gomes@gmail.com,987654567,Moda,Beleza,Estilo
+Hugo Barbosa,m,24-12-1990,hugo.barbosa@outlook.com,998762345,Esportes,Academia,Nutrição
+Cláudia Reis,f,07-05-1983,claudia.reis@hotmail.com,987653456,Culinária,Gastronomia,Vinhos
+Alexandre Moura,m,20-08-1978,alexandre.moura@yahoo.com,998769012,Política,Sociedade,Filosofia
+Sandra Lima,f,13-01-1996,sandra.lima@gmail.com,987651234,Saúde,Medicina,Enfermagem
+Paulo Henrique,m,26-06-1981,paulo.henrique@outlook.com,998764567,Tecnologia,Engenharia,Robótica
+Tânia Andrade,f,02-09-1989,tania.andrade@hotmail.com,987658765,Arte,Design,Arquitetura
+Renato Silva,m,15-04-1993,renato.silva@yahoo.com,998763456,Games,Tecnologia,Programação
+Viviane Castro,f,28-02-1986,viviane.castro@gmail.com,987659012,Moda,Beleza,Estilo
+Márcio Santos,m,01-07-1979,marcio.santos@outlook.com,998762123,Carros,Motos,Automobilismo
+Helena Costa,f,10-10-1997,helena.costa@hotmail.com,987654789,Música,Dança,Teatro
+Fábio Junior,m,23-03-1984,fabio.junior@yahoo.com,998767890,Esportes,Futebol,Academia
+Simone Araújo,f,06-12-1991,simone.araujo@gmail.com,987651567,Cinema,Séries,TV
+César Augusto,m,19-05-1988,cesar.augusto@outlook.com,998764098,História,Geografia,Cultura
+Elaine Souza,f,04-08-1982,elaine.souza@hotmail.com,987653789,Viagens,Aventura,Natureza
+Marcelo Lima,m,17-11-1977,marcelo.lima@yahoo.com,998769876,Tecnologia,Inovação,Startups
+Priscila Rocha,f,09-04-1994,priscila.rocha@gmail.com,987652456,Moda,Beleza,Maquiagem
+Rogério Alves,m,22-01-1985,rogerio.alves@outlook.com,998763567,Finanças,Economia,Investimentos
+Mrs. Brenda Stewart DVM,Other,1963-10-26,jacksongregory@allison.com,270-846-9249x2445,reading,2020-02-20 21:49:27,2022-10-05 17:25:51
+"Amy Pope,Other,1991-11-20,wrightryan@hotmail.com,+1-301-969-4344,""sports, reading"",2022-03-04 04:17:22,2022-05-01 18:56:55"
+Todd Mendoza,Male,1996-01-04,jose64@campbell-barrett.com,040-878-7029x631,gaming,2023-07-23 16:06:12,2024-03-12 08:09:20
+"Johnny Lopez,Male,1958-01-05,iwalker@gmail.com,080.496.1091,""cooking, gaming, sports"",2021-04-24 02:35:22,2021-09-08 21:35:04"
+"Sharon Parks,Female,1966-05-15,smann@yahoo.com,(773)921-4804x55464,""cooking, gaming, sports, traveling"",2021-08-22 17:20:04,2021-08-25 13:08:39"
+"Mary Brown,Other,1987-09-16,carterjamie@riley.com,(841)754-6215,""technology, music, reading"",2024-11-24 15:27:19,2024-12-29 10:17:18"
+"Melissa Aguilar,Female,1983-11-18,whammond@elliott.org,(585)462-8984x64933,""sports, technology"",2020-01-11 23:03:03,2024-09-22 03:07:15"
+Maria Montes,Female,2004-06-12,cindywillis@lee-wilson.com,066.985.4758,technology,2023-10-22 19:46:19,2024-03-16 11:42:58
+"Stephanie Gutierrez,Other,1960-06-15,imartin@gmail.com,4212066654,""gaming, sports, reading, traveling"",2023-12-27 21:31:40,2024-11-27 09:58:29"
+"Dakota Smith,Male,1971-05-18,margaret38@wagner-kelly.com,270-331-0747x9162,""sports, gaming, movies, cooking"",2022-12-10 10:55:09,2023-05-18 22:57:27"
+"Amanda Nash,Other,1997-10-20,ostokes@gmail.com,001-056-380-5607,""cooking, sports"",2020-10-10 00:21:12,2021-01-28 19:13:15"
+"Amanda Hansen,Other,1986-07-30,ljensen@robbins.org,625-224-1430,""movies, traveling, technology"",2020-06-12 00:07:39,2021-11-06 13:12:07"
+"Holly Glover,Other,1970-01-20,orozcobrian@yahoo.com,(647)172-3966x366,""gaming, technology, movies"",2020-01-19 18:41:08,2024-12-26 00:51:19"
+"Katrina Mann,Other,1960-03-19,danielle15@thomas-chung.com,627.398.3077,""movies, cooking"",2022-06-02 03:36:40,2024-12-24 22:02:15"
+"Kimberly Friedman,Other,2001-10-19,lisa32@lewis.info,044-171-5731,""technology, traveling"",2020-06-21 23:37:38,2023-08-25 16:10:05"
+"Angel Scott,Other,1971-03-05,vasquezjason@jennings-fry.org,6540026176,""movies, technology, reading, traveling"",2024-08-02 05:17:55,2024-11-14 14:38:36"
+"Dr. Erica Rodriguez,Female,1983-03-08,taylormaria@yahoo.com,168-869-4275,""technology, reading, gaming"",2022-07-05 11:59:07,2024-07-28 00:06:15"
+"Stephanie Robinson,Other,1970-04-16,anarivera@kelley.com,(117)974-1818,""music, movies, sports"",2023-05-06 14:08:28,2024-03-14 01:06:17"
+"Vanessa Pennington,Other,1959-02-06,ethan47@gmail.com,+1-751-106-7554x88160,""traveling, reading"",2023-05-22 21:29:23,2024-05-24 14:21:19"
+Sherri Arellano,Other,1961-01-15,mario22@yahoo.com,+1-713-261-5173x89917,gaming,2025-02-12 22:15:02,2025-04-29 06:16:42
+"Danielle Lewis,Female,2000-09-17,hoopercourtney@hotmail.com,5165772476,""gaming, movies"",2025-04-26 05:14:23,2025-04-28 15:28:40"
+"Michael Wilson DDS,Male,1997-10-13,rebecca64@nielsen.net,+1-320-425-8027x46334,""movies, technology"",2024-09-24 21:12:16,2025-03-22 12:17:58"
+"Mrs. Christina Thomas MD,Female,1978-03-29,jamesblanchard@yahoo.com,(046)640-0920,""cooking, reading"",2020-08-19 15:39:14,2022-07-23 17:43:50"
+"Dorothy Nicholson,Other,1996-11-27,andrewmiller@leblanc.com,(724)657-1095x324,""technology, cooking, reading, sports"",2024-01-21 01:39:12,2025-01-09 16:08:07"
+"Suzanne Gibson,Other,1976-10-01,gracehardy@hotmail.com,658-855-2151,""movies, gaming"",2025-04-13 20:22:29,2025-04-16 23:55:32"
+"Cassandra Erickson,Female,1956-08-07,jeffrey31@gmail.com,7424396087,""sports, reading"",2020-04-17 16:37:02,2023-07-29 16:47:42"
+"Lisa Reed,Other,1972-03-22,marshwilliam@burns.com,(751)722-2103,""gaming, sports"",2020-12-27 11:38:37,2024-08-21 03:13:51"
+"Marcus Cook,Male,1984-11-01,wmckee@garcia.org,+1-819-968-9692x1474,""technology, traveling"",2022-02-04 15:37:21,2023-07-16 08:12:05"
+"John Doyle,Male,1984-08-04,walkergerald@schmidt-davis.com,(755)274-2421x79147,""movies, sports, cooking, gaming"",2022-12-28 23:14:34,2024-04-01 22:50:43"
+"Joseph Tucker,Male,1977-11-19,kristin79@gmail.com,9863959030,""movies, gaming, music"",2024-02-26 15:39:14,2024-09-04 06:56:28"
+"Nicole Barnett,Other,2005-04-11,andrew14@gmail.com,(874)773-1386,""sports, cooking"",2025-02-03 16:28:51,2025-02-22 18:57:08"
+"Shannon Coleman,Female,1992-09-20,scottsue@hart-skinner.com,761-966-7414x82949,""cooking, technology"",2022-06-27 19:50:59,2022-11-13 01:54:32"
+"Nicholas Parsons,Male,1960-08-21,arnoldrebecca@gmail.com,001-139-124-0396,""reading, music, sports"",2021-09-04 01:16:24,2024-02-29 08:41:45"
+"Samantha Sutton,Other,2005-06-16,amatthews@rivers.com,+1-110-353-2484x96636,""technology, traveling, reading"",2024-12-29 01:32:26,2025-04-24 06:39:01"
+Elizabeth Jimenez,Female,1960-05-16,danielleon@hotmail.com,+1-958-262-4305x817,cooking,2024-03-23 08:35:16,2024-05-06 02:39:41
+"Christina Johnson,Female,2000-10-06,wallacejoseph@diaz.com,001.993.6539x6567,""gaming, sports, music"",2021-09-07 06:53:26,2023-05-06 18:01:52"
+Anthony Strickland,Male,1997-04-07,cookjustin@hotmail.com,979-241-8207x728,traveling,2023-03-06 05:28:07,2025-01-30 07:26:46
+"Courtney Davis,Other,1981-10-12,owalsh@kelly.net,151.626.1295x7991,""technology, sports, gaming, traveling"",2023-12-21 12:13:04,2025-03-07 21:57:57"
+"Hannah Smith,Female,1970-12-14,nataliemiller@yahoo.com,713-043-0247x051,""reading, gaming"",2021-11-17 21:07:31,2023-03-15 12:04:43"
+"Christopher Maxwell,Male,1960-03-27,kerryherrera@yahoo.com,703.521.3026x80927,""technology, gaming, reading"",2022-07-01 04:19:23,2025-03-16 16:48:08"
+"Amy Mendez,Female,1984-02-09,freemanashley@meyer-miller.com,117.122.6111,""sports, traveling, gaming, cooking"",2023-11-10 02:11:58,2023-12-20 14:32:40"
+"Sean Hughes,Male,1963-10-07,carriecarrillo@ray-harrell.net,(115)265-6602x0728,""gaming, movies, music"",2024-02-12 06:45:18,2024-10-30 16:44:00"
+"Elaine Schmidt,Other,1986-12-20,richardrowe@yahoo.com,586-229-1882x208,""traveling, movies"",2022-08-05 14:06:52,2023-03-01 01:43:11"
+"Katelyn Richards,Female,1955-08-05,fharding@pearson.info,4385048278,""cooking, reading"",2024-06-30 09:24:23,2024-12-01 23:02:41"
+Rachel Jones,Other,1969-11-07,rodriguezshawn@best-decker.com,(487)106-0261,music,2023-08-15 02:30:57,2025-02-27 12:17:25
+Danielle Mora,Female,1976-06-12,nicole85@leblanc.biz,001-987-883-6344x934,reading,2020-07-31 20:15:15,2021-05-23 12:22:24
+"Richard Woodard,Male,1986-01-13,brooke69@horn.net,168.527.0259x0832,""sports, music, reading, traveling"",2020-05-04 17:51:23,2021-03-30 17:30:37"

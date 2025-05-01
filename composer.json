@@ -1,0 +1,27 @@
+{
+    "name": "bng/bng",
+    "description": "Aplicacao para gestao de name gathering.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Paulo Victor",
+            "email": "paulovdbarbosa@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.9",
+        "phpoffice/phpspreadsheet": "^4.2",
+        "mpdf/mpdf": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "bng\\Controllers\\":["app/controllers"],
+            "bng\\Models\\":["app/models"],
+            "bng\\System\\":["app/system"]
+        },
+        "files":[
+            "app/config.php",
+            "app/helpers/functions.php"
+        ]
+    }
+}

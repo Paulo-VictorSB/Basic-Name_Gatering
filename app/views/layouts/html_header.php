@@ -16,19 +16,20 @@
     <link rel="stylesheet" href="assets/fontawesome/all.min.css">
     <!-- custom css -->
     <link rel="stylesheet" href="assets/app.css">
-
-    <!-- flatpickr -->
     <?php if(isset($flatpickr)): ?>
+        <!-- flatpickr -->
     <link rel="stylesheet" href="assets/flatpickr/flatpickr.min.css">
     <script src="assets/flatpickr/flatpickr.min.js"></script>
     <?php endif; ?>
-
     <!-- jQuery -->
     <script src="assets/jquery/jquery-3.6.0.min.js"></script>
-
     <!-- datatables -->
     <link rel="stylesheet" href="assets/datatables/datatables.min.css">
     <script src="assets/datatables/datatables.min.js"></script>
+    <!-- chart js -->
+    <? if(isset($chartjs)) : ?>
+        <script src="assets/chartjs/chart.js"></script>
+    <? endif ; ?>
 
 </head>
 <body>

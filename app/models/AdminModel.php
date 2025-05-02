@@ -120,4 +120,86 @@ class AdminModel extends BaseModel
 
         return $results;
     }
+
+    public function get_agents_for_management()
+    {
+        //  get agents data to admin agents management
+
+        $this->db_connect();
+        $results = $this->query("
+            SELECT
+                id,
+                AES_DECRYPT(name, '" . MYSQL_AES_KEY . "') name,
+                profile,
+                last_login,
+                created_at,
+                updated_at,
+                deleted_at
+            FROM agents
+        ");
+
+        return $results;
+    }
+
+    public function check_if_user_exists_with_the_same_name($name)
+    {
+        // check if there is a user with the $name
+        $params = [
+            ':name' => $name
+        ];
+
+        $this->db_connect();
+        $results = $this->query(
+            "SELECT id FROM agents " .
+            "WHERE AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "') = name"
+        , $params);
+
+        if($results->affected_rows == 0){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function add_new_agent($data)
+    {
+        // add new agent to the database
+
+        // generate purl
+        $chars = 'abcdefghijkabcdefghijkabcdefghijkABCDEFGHIJKABCDEFGHIJKABCDEFGHIJK';
+        $purl = substr(str_shuffle($chars), 0, 20);
+
+        $params = [
+            ':name' => $data['text_name'],
+            ':profile' => $data['select_profile'],
+            ':purl' => $purl
+        ];
+
+        $this->db_connect();
+        $results = $this->non_query(
+            "INSERT INTO agents VALUES(" . 
+            "0, " . 
+            "AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "'), " . 
+            "NULL, " . 
+            ":profile, " . 
+            ":purl, " . 
+            "NULL, " . 
+            "NULL, " . 
+            "NOW(), " . 
+            "NULL, " . 
+            "NULL)"
+        , $params);
+        
+        if($results->affected_rows == 0){
+            return [
+                'status' => 'error'
+            ];
+        } else {
+            return [
+                'status' => 'success',
+                'email' => $data['text_name'],
+                'purl' => $purl
+            ];
+        }
+    }
 }

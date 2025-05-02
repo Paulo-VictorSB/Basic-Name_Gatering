@@ -15,3 +15,5 @@ define('LOGS_PATH', __DIR__ . '/../logs/app.log');
 // openssl
 define('OPENSSL_KEY',       'H0SDRQzIGqclX2kbYBk9xspdn9U5f3Wa');
 define('OPENSSL_IV',        'BzKAbjuREsHgnw56');
+
+define('EMAIL_FROM', 'general@bng.com');

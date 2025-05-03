@@ -298,14 +298,14 @@ class Main extends BaseController
 
     public function define_password($purl = '')
     {
-        // if there is open session, gets out!
-        if (check_session()){
+        // if there is a open session, gets out!
+        if (check_session()) {
             $this->index();
             return;
         }
 
         // check if the purl is valid
-        if (empty($purl) || strlen($purl) != 20){
+        if (empty($purl) || strlen($purl) != 20) {
             die('Erro nas credenciais de acesso.');
         }
 
@@ -313,13 +313,14 @@ class Main extends BaseController
         $model = new Agents();
         $results = $model->check_new_agent_purl($purl);
 
-        if (!$results['status']){
+        if (!$results['status']) {
             die('Erro nas credenciais de acesso.');
         }
 
-        if (!empty($_SESSION['validation_errors'])) {
-            $data['validation_errors'] = $_SESSION['validation_errors'];
-            unset($_SESSION['validation_errors']);
+        // check for validation error
+        if (isset($_SESSION['validation_error'])) {
+            $data['validation_error'] = $_SESSION['validation_error'];
+            unset($_SESSION['validation_error']);
         }
 
         $data['purl'] = $purl;
@@ -331,6 +332,7 @@ class Main extends BaseController
         $this->view('layouts/html_footer');
     }
 
+    // =======================================================
     public function define_password_submit()
     {
         // if there is a open session, gets out!
@@ -363,12 +365,12 @@ class Main extends BaseController
 
         // form validation - check password's structure
         if (empty($_POST['text_password'])) {
-            $_SESSION['validation_errors'] = "Password é de preenchimento obrigatório.";
+            $_SESSION['validation_error'] = "Password é de preenchimento obrigatório.";
             $this->define_password($purl);
             return;
         }
         if (empty($_POST['text_repeat_password'])) {
-            $_SESSION['validation_errors'] = "Repetir a password é de preenchimento obrigatório.";
+            $_SESSION['validation_error'] = "Repetir a password é de preenchimento obrigatório.";
             $this->define_password($purl);
             return;
         }
@@ -378,12 +380,12 @@ class Main extends BaseController
         $repeat_password = $_POST['text_repeat_password'];
 
         if (strlen($password) < 6 || strlen($password) > 12) {
-            $_SESSION['validation_errors'] = "A password deve ter entre 6 e 12 caracteres.";
+            $_SESSION['validation_error'] = "A password deve ter entre 6 e 12 caracteres.";
             $this->define_password($purl);
             return;
         }
-        if (strlen($repeat_password) < 6 || strlen($repeat_password) > 12) {
-            $_SESSION['validation_errors'] = "A repetição da password deve ter entre 6 e 12 caracteres.";
+        if (strlen($repeat_password < 6 || strlen($repeat_password) > 12)) {
+            $_SESSION['validation_error'] = "A repetição da password deve ter entre 6 e 12 caracteres.";
             $this->define_password($purl);
             return;
         }
@@ -392,19 +394,19 @@ class Main extends BaseController
 
         // use positive look ahead
         if (!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/", $password)) {
-            $_SESSION['validation_errors'] = "A password deve ter, pelo menos, uma maiúscula, uma minúscula e um dígito.";
+            $_SESSION['validation_error'] = "A password deve ter, pelo menos, uma maiúscula, uma minúscula e um dígito.";
             $this->define_password($purl);
             return;
         }
         if (!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/", $repeat_password)) {
-            $_SESSION['validation_errors'] = "A repetição da password deve ter, pelo menos, uma maiúscula, uma minúscula e um dígito.";
+            $_SESSION['validation_error'] = "A repetição da password deve ter, pelo menos, uma maiúscula, uma minúscula e um dígito.";
             $this->define_password($purl);
             return;
         }
 
         // check if the password and repeat password are equal values
         if ($password != $repeat_password) {
-            $_SESSION['validation_errors'] = "A password e a sua repetição não são iguais.";
+            $_SESSION['validation_error'] = "A password e a sua repetição não são iguais.";
             $this->define_password($purl);
             return;
         }

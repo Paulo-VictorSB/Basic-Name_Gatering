@@ -238,10 +238,11 @@ class AdminModel extends BaseModel
         ];
         $this->db_connect();
         $results = $this->query(
-            "SELECT id FROM agents " . 
-            "WHERE AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "') = name " . 
-            "AND id <> :id"
-        , $params);
+            "SELECT id FROM agents " .
+                "WHERE AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "') = name " .
+                "AND id <> :id",
+            $params
+        );
 
         return $results->affected_rows != 0 ? true : false;
     }
@@ -257,12 +258,103 @@ class AdminModel extends BaseModel
         ];
         $this->db_connect();
         $results = $this->non_query(
-            "UPDATE agents SET " . 
-            "name = AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "'), " . 
-            "profile = :profile, " . 
-            "updated_at = NOW() " . 
-            "WHERE id = :id"
-        , $params);
+            "UPDATE agents SET " .
+                "name = AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "'), " .
+                "profile = :profile, " .
+                "updated_at = NOW() " .
+                "WHERE id = :id",
+            $params
+        );
+        return $results;
+    }
+
+    public function get_agent_data_and_total_clients($id)
+    {
+        // returns the agent personal data and total clients
+        $params = [
+            ':id' => $id
+        ];
+        $this->db_connect();
+        $results = $this->query(
+            "SELECT " .
+                "id, " .
+                "AES_DECRYPT(`name`, '" . MYSQL_AES_KEY . "') `name`, " .
+                "profile, " .
+                "created_at, " .
+                "updated_at, " .
+                "deleted_at, " .
+                "(SELECT COUNT(*) FROM persons WHERE id_agent = :id) total_clients " .
+                "FROM agents " .
+                "WHERE id = :id",
+            $params
+        );
+        return $results;
+    }
+
+    public function delete_agent($id)
+    {
+        // soft deletes the agent
+        $params = [
+            ':id' => $id
+        ];
+        $this->db_connect();
+        $results = $this->non_query(
+            "UPDATE agents SET " .
+                "deleted_at = NOW() " .
+                "WHERE id = :id",
+            $params
+        );
+        return $results;
+    }
+
+    public function recovery_agent($id)
+    {
+        // soft deletes the agent
+        $params = [
+            ':id' => $id
+        ];
+        $this->db_connect();
+        $results = $this->non_query(
+            "UPDATE agents SET " .
+                "updated_at = NOw(), " .
+                "deleted_at = NULL " .
+                "WHERE id = :id",
+            $params
+        );
+        return $results;
+    }
+
+public function get_agents_data_and_total_clients()
+    {
+        // returns total information about agents
+        $this->db_connect();
+        $results = $this->query(
+            "SELECT " .
+            "AES_DECRYPT(`name`, 'Vduu47qL51hLn6bkYkY6NlO1nivsmdfD') `name`, " .
+            "`profile`, " .
+            "CASE " .
+            "WHEN passwrd IS NOT NULL THEN 'active' " . 
+            "WHEN passwrd IS NULL THEN 'not active' " .
+            "END `active`, " .
+            "last_login, " .
+            "created_at, " .
+            "updated_at, " .
+            "deleted_at, " .
+            "a.total_active_clients, " .
+            "b.total_deleted_clients " .
+            "FROM agents LEFT JOIN " .
+            "( " .
+            "SELECT id_agent, COUNT(*) total_active_clients FROM persons WHERE deleted_at IS NULL " .
+            "GROUP BY id_agent " .
+            ") a " .
+            "ON id = a.id_agent " .
+            "LEFT JOIN " .
+            "( " .
+            "SELECT id_agent, COUNT(*) total_deleted_clients FROM persons WHERE deleted_at IS NOT NULL " .
+            "GROUP BY id_agent " .
+            ") b " .
+            "ON id = b.id_agent"
+        );
         return $results;
     }
 }

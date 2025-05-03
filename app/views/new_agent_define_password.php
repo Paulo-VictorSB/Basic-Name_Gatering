@@ -10,41 +10,45 @@
 
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form action="?ct=main&mt=login_submit" method="post">
-                            <div class="mb-3">
-                                <label for="text_username" class="form-label">Utilizador</label>
-                                <input type="email" name="text_username" id="text_username" value="" class="form-control" required>
-                            </div>
+
+                        <form action="?ct=main&mt=define_password_submit" method="post" >
+
+                            <input type="hidden" name="purl" value="<?= $purl ?>">
+                            <input type="hidden" name="id" value="<?= aes_encrypt($id) ?>">
+
+                            <p class="mb-3">Para concluir o registo, defina a sua <strong>password</strong>.</p>
+
                             <div class="mb-3">
                                 <label for="text_password" class="form-label">Password</label>
                                 <input type="password" name="text_password" id="text_password" class="form-control" required>
                             </div>
-                            <div class="mb-3 text-center">
-                                <button type="submit" class="btn btn-secondary px-4">Entrar<i class="fa-solid fa-right-to-bracket ms-2"></i></button>
+
+                            <div class="mb-3">
+                                <label for="text_repeat_password" class="form-label">Repetir a password</label>
+                                <input type="password" name="text_repeat_password" id="text_repeat_password" class="form-control" required>
                             </div>
 
                             <div class="mb-3 text-center">
-                                <a href="#">Esqueci-me da password!</a>
+                                <button type="submit" class="btn btn-secondary px-3"><i class="fa-solid fa-check me-2"></i>Definir password</button>
                             </div>
 
-                            <?php if(!empty($validation_errors)): ?>
+                            <?php if (!empty($validation_error)) : ?>
                                 <div class="alert alert-danger p-2 text-center">
-                                    <?php foreach ($validation_errors as $error): ?>
-                                        <div><?=$error ?></div>
-                                    <?php endforeach ?>
+                                    <?= $validation_error ?>
                                 </div>
-                            <?php endif;?>
+                            <?php endif; ?>
 
-                            <?php if(!empty($server_error)): ?>
+                            <?php if (!empty($server_error)) : ?>
                                 <div class="alert alert-danger p-2 text-center">
-                                    <div><?=$server_error ?></div>
+                                    <?= $server_error ?>
                                 </div>
-                            <?php endif;?>
+                            <?php endif; ?>
 
                         </form>
+
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

@@ -358,4 +358,9 @@ class Agents extends BaseModel
             "WHERE id = :id"
         , $params);
     }
+
+    public function define_password_submit($id, $passwrd)
+    {
+        
+    }
 }

@@ -32,8 +32,8 @@ class Router
             $class = "bng\Controllers\\$controller";
             $controller = new $class();
             $controller->$method(...$parameters);
-        } catch (Exception $err) {
-            die($err->getMessage());
+        } catch (\Throwable $th) {
+            die("Acesso inválido");
         }
     }
 }

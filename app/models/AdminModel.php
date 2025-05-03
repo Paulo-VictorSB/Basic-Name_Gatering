@@ -12,22 +12,22 @@ class AdminModel extends BaseModel
         $this->db_connect();
         $results = $this->query(
             "SELECT " .
-            "p.id, " .
-            "AES_DECRYPT(p.name, '" . MYSQL_AES_KEY ."') name, " .
-            "p.gender, " .
-            "p.birthdate, " .
-            "AES_DECRYPT(p.email, '" . MYSQL_AES_KEY ."') email, " .
-            "AES_DECRYPT(p.phone, '" . MYSQL_AES_KEY ."') phone, " .
-            "p.interests, " .
-            "p.created_at, " .
-            "AES_DECRYPT(a.name, '" . MYSQL_AES_KEY ."') agent " .
-            "FROM persons p LEFT JOIN agents a " .
-            "ON p.id_agent = a.id " .
-            "WHERE p.deleted_at IS NULL " .
-            "ORDER BY created_at DESC"
+                "p.id, " .
+                "AES_DECRYPT(p.name, '" . MYSQL_AES_KEY . "') name, " .
+                "p.gender, " .
+                "p.birthdate, " .
+                "AES_DECRYPT(p.email, '" . MYSQL_AES_KEY . "') email, " .
+                "AES_DECRYPT(p.phone, '" . MYSQL_AES_KEY . "') phone, " .
+                "p.interests, " .
+                "p.created_at, " .
+                "AES_DECRYPT(a.name, '" . MYSQL_AES_KEY . "') agent " .
+                "FROM persons p LEFT JOIN agents a " .
+                "ON p.id_agent = a.id " .
+                "WHERE p.deleted_at IS NULL " .
+                "ORDER BY created_at DESC"
         );
 
-        return $results; 
+        return $results;
     }
 
     public function get_agents_clients_stats()
@@ -77,7 +77,7 @@ class AdminModel extends BaseModel
 
         // younger client
         $tmp = $this->query("SELECT TIMESTAMPDIFF(YEAR,birthdate,CURDATE()) value FROM persons ORDER BY birthdate DESC LIMIT 1");
-        if($tmp->affected_rows == 0){
+        if ($tmp->affected_rows == 0) {
             $results['younger_client'] = null;
         } else {
             $results['younger_client'] = $tmp->results[0];
@@ -85,8 +85,8 @@ class AdminModel extends BaseModel
 
         // oldest client
         $tmp = $this->query("SELECT TIMESTAMPDIFF(YEAR,birthdate,CURDATE()) value FROM persons ORDER BY birthdate ASC LIMIT 1");
-        if($tmp->affected_rows == 0){
-            $results['oldest_client'] = null;    
+        if ($tmp->affected_rows == 0) {
+            $results['oldest_client'] = null;
         } else {
             $results['oldest_client'] = $tmp->results[0];
         }
@@ -131,6 +131,7 @@ class AdminModel extends BaseModel
                 id,
                 AES_DECRYPT(name, '" . MYSQL_AES_KEY . "') name,
                 profile,
+                passwrd,
                 last_login,
                 created_at,
                 updated_at,
@@ -151,10 +152,11 @@ class AdminModel extends BaseModel
         $this->db_connect();
         $results = $this->query(
             "SELECT id FROM agents " .
-            "WHERE AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "') = name"
-        , $params);
+                "WHERE AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "') = name",
+            $params
+        );
 
-        if($results->affected_rows == 0){
+        if ($results->affected_rows == 0) {
             return false;
         } else {
             return true;
@@ -177,20 +179,21 @@ class AdminModel extends BaseModel
 
         $this->db_connect();
         $results = $this->non_query(
-            "INSERT INTO agents VALUES(" . 
-            "0, " . 
-            "AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "'), " . 
-            "NULL, " . 
-            ":profile, " . 
-            ":purl, " . 
-            "NULL, " . 
-            "NULL, " . 
-            "NOW(), " . 
-            "NULL, " . 
-            "NULL)"
-        , $params);
-        
-        if($results->affected_rows == 0){
+            "INSERT INTO agents VALUES(" .
+                "0, " .
+                "AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "'), " .
+                "NULL, " .
+                ":profile, " .
+                ":purl, " .
+                "NULL, " .
+                "NULL, " .
+                "NOW(), " .
+                "NULL, " .
+                "NULL)",
+            $params
+        );
+
+        if ($results->affected_rows == 0) {
             return [
                 'status' => 'error'
             ];
@@ -201,5 +204,65 @@ class AdminModel extends BaseModel
                 'purl' => $purl
             ];
         }
+    }
+
+    public function get_agent_data($id)
+    {
+        // get agent data to be edited
+        $params = [
+            ':id' => $id
+        ];
+
+        $this->db_connect();
+        $results = $this->query(
+            "SELECT " .
+                "id, " .
+                "AES_DECRYPT(name, '" . MYSQL_AES_KEY . "') name, " .
+                "profile, " .
+                "created_at, " .
+                "updated_at, " .
+                "deleted_at " .
+                "FROM agents " .
+                "WHERE id = :id",
+            $params
+        );
+        return $results;
+    }
+
+    public function check_if_another_user_exists_with_same_name($id, $name)
+    {
+        // check if there is another agent with the same name (email)
+        $params = [
+            ':id' => $id,
+            ':name' => $name
+        ];
+        $this->db_connect();
+        $results = $this->query(
+            "SELECT id FROM agents " . 
+            "WHERE AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "') = name " . 
+            "AND id <> :id"
+        , $params);
+
+        return $results->affected_rows != 0 ? true : false;
+    }
+
+    // =======================================================
+    public function edit_agent($id, $data)
+    {
+        // updates the agent's information
+        $params = [
+            ':id' => $id,
+            ':name' => $data['text_name'],
+            ':profile' => $data['select_profile']
+        ];
+        $this->db_connect();
+        $results = $this->non_query(
+            "UPDATE agents SET " . 
+            "name = AES_ENCRYPT(:name, '" . MYSQL_AES_KEY . "'), " . 
+            "profile = :profile, " . 
+            "updated_at = NOW() " . 
+            "WHERE id = :id"
+        , $params);
+        return $results;
     }
 }

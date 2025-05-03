@@ -17,11 +17,12 @@ class Agents extends BaseModel
         // check if there is a user in the database
         $this->db_connect();
         $results = $this->query(
-            "SELECT id, passwrd FROM agents " . 
-            "WHERE AES_ENCRYPT(:username, '" .MYSQL_AES_KEY. "') = name"
-            , $params
+            "SELECT id, passwrd FROM agents 
+             WHERE name = AES_ENCRYPT(:username, '" . MYSQL_AES_KEY . "') 
+             AND deleted_at IS NULL",
+            $params
         );
-
+        
         // if ther is no user, returns false
         if($results->affected_rows == 0)
         {
@@ -339,5 +340,22 @@ class Agents extends BaseModel
                 'id' => $results->results[0]->id
             ];
         }
+    }
+
+    public function set_agent_password($id, $password)
+    {
+        $params = [
+            ':id' => $id,
+            ':passwrd' => password_hash($password, PASSWORD_DEFAULT)
+        ];
+
+        $this->db_connect();
+        $this->non_query(
+            "UPDATE agents SET " .
+            "passwrd = :passwrd, " .
+            "purl = NULL, " .
+            "updated_at = NOW() " . 
+            "WHERE id = :id"
+        , $params);
     }
 }

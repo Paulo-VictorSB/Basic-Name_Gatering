@@ -20,11 +20,12 @@
                 </div>
             <?php else: ?>
 
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered" id="tb_agents">
                     <thead class="table-dark">
                         <tr>
                             <th>Nome</th>
                             <th class="text-center">Perfil</th>
+                            <th class="text-center">Registado</th>
                             <th class="text-center">Último login</th>
                             <th class="text-center">Criado em</th>
                             <th class="text-center">Atualizado em</th>
@@ -33,25 +34,51 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($agents as $agent): ?>
-                        <tr>
-                            <td><?= $agent->name ?></td>
-                            <td class="text-center"><?= $agent->profile ?></td>
-                            <td class="text-center"><?= $agent->last_login ?></td>
-                            <td class="text-center"><?= $agent->created_at ?></td>
-                            <td class="text-center"><?= $agent->updated_at ?></td>
-                            <td class="text-center"><?= $agent->deleted_at ?></td>
-                            <td class="text-end">
-                                <a href="?ct=admin&mt=edit_agent&id=<?= aes_encrypt($agent->id)?>"><i class="fa-regular fa-pen-to-square me-2"></i>Editar</a>
-                                <span class="mx-2 opacity-50">|</span>
-                                <a href="?ct=admin&mt=delete_agent&id=<?= aes_encrypt($agent->id)?>"><i class="fa-solid fa-trash-can me-2"></i>Eliminar</a>
-                            </td>
-                        </tr>
+                        <?php foreach ($agents as $agent) : ?>
+                            <tr>
+                                <td>
+                                    <?php if ($agent->profile == 'admin') : ?>
+                                        <i class="fa-solid fa-user-tie"></i>
+                                    <?php else : ?>
+                                        <i class="fa-regular fa-user"></i>
+                                    <?php endif; ?>
+                                    <span class="ms-3"><?= $agent->name ?></span>
+                                </td>
+                                <td class="text-center"><?= $agent->profile ?></td>
+                                <td class="text-center">
+                                    <?php if (!empty($agent->passwrd)) : ?>
+                                        <i class="fa-solid fa-circle-check text-success"></i>
+                                    <?php else : ?>
+                                        <i class="fa-solid fa-circle-xmark text-danger"></i>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="text-center"><?= $agent->last_login ?></td>
+                                <td class="text-center"><?= $agent->created_at ?></td>
+                                <td class="text-center"><?= $agent->updated_at ?></td>
+                                <td class="text-center text-danger"><?= $agent->deleted_at ?></td>
+                                <td class="text-end">
+
+                                    <?php if ($agent->id != $_SESSION['user']->id) : ?>
+                                        <?php if (empty($agent->deleted_at)) : ?>
+                                            <a href="?ct=admin&mt=edit_agent&id=<?= aes_encrypt($agent->id) ?>"><i class="fa-regular fa-pen-to-square me-2"></i>Editar</a>
+                                            <span class="mx-2 opacity-50">|</span>
+                                            <a href="?ct=admin&mt=edit_delete&id=<?= aes_encrypt($agent->id) ?>"><i class="fa-solid fa-trash-can me-2"></i>Eliminar</a>
+                                        <?php else : ?>
+                                            <span class="opacity-50"><i class="fa-regular fa-pen-to-square me-2"></i>Editar</span>
+                                            <span class="mx-2 opacity-50">|</span>
+                                            <a href="?ct=admin&mt=edit_recover&id=<?= aes_encrypt($agent->id) ?>"><i class="fa-solid fa-rotate-left me-2"></i>Recuperar</a>
+                                        <?php endif; ?> 
+                                    <?php else: ?>
+                                        <span class="opacity-50">Usuário atual</span>
+                                    <?php endif; ?> 
+
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
 
-                <div class="row">
+                <div class="row my-3">
                     <div class="col">
                         <p class="mb-5">Total: <strong><?= count($agents) ?></strong></p>
                     </div>
@@ -65,3 +92,37 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        // datatable
+        $("#tb_agents").DataTable({
+            pageLength: 10,
+            pagingType: "full_numbers",
+            language: {
+                decimal: "",
+                emptyTable: "Sem dados disponíveis na tabela",
+                info: "Mostrando _START_ até _END_ de _TOTAL_ registros",
+                infoEmpty: "Mostrando 0 até 0 de 0 registros",
+                infoFillered: "(Filtrando _MAX_ total de registros)",
+                infoPostFix: "",
+                thousands: ",",
+                lengthMenu: "Mostrando _MENU_ registros por página",
+                loadingRecords: "Carregando...",
+                processing: "Processando...",
+                search: "Filtrar:",
+                zeroRecords: "Nenhum registro encontrado",
+                paginate: {
+                    first: "Primeira",
+                    last: "Última",
+                    next: "Próxima",
+                    previous: "Anterior"
+                },
+                aria: {
+                    sortAscending: ": ative para classificar a coluna em ordem crescente.",
+                    sortAscending: ": ative para classificar a coluna em ordem crescente."
+                }
+            }
+        });
+    })
+</script>
